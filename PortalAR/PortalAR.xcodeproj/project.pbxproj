@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AAB0829C2A0F597E00A639D0 /* PortalARApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB082952A0F597E00A639D0 /* PortalARApp.swift */; };
+		AAB0829D2A0F597E00A639D0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB082962A0F597E00A639D0 /* ContentView.swift */; };
+		AAB0829E2A0F597E00A639D0 /* PortalARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB082972A0F597E00A639D0 /* PortalARView.swift */; };
+		AAB0829F2A0F597E00A639D0 /* PortalManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB082982A0F597E00A639D0 /* PortalManager.swift */; };
+		AAB082A02A0F597E00A639D0 /* TransformExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAB082992A0F597E00A639D0 /* TransformExtensions.swift */; };
+		AAB082A12A0F597E00A639D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAB0829B2A0F597E00A639D0 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		AAB082942A0F597E00A639D0 /* PortalAR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PortalAR.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAB082952A0F597E00A639D0 /* PortalARApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalARApp.swift; sourceTree = "<group>"; };
+		AAB082962A0F597E00A639D0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AAB082972A0F597E00A639D0 /* PortalARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalARView.swift; sourceTree = "<group>"; };
+		AAB082982A0F597E00A639D0 /* PortalManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalManager.swift; sourceTree = "<group>"; };
+		AAB082992A0F597E00A639D0 /* TransformExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformExtensions.swift; sourceTree = "<group>"; };
+		AAB0829A2A0F597E00A639D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AAB0829B2A0F597E00A639D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AAB082A82A0F597E00A639D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AAB082922A0F597E00A639D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AAB0828D2A0F597E00A639D0 = {
+			isa = PBXGroup;
+			children = (
+				AAB0828E2A0F597E00A639D0 /* PortalAR */,
+				AAB0828F2A0F597E00A639D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AAB0828E2A0F597E00A639D0 /* PortalAR */ = {
+			isa = PBXGroup;
+			children = (
+				AAB082952A0F597E00A639D0 /* PortalARApp.swift */,
+				AAB082962A0F597E00A639D0 /* ContentView.swift */,
+				AAB082972A0F597E00A639D0 /* PortalARView.swift */,
+				AAB082982A0F597E00A639D0 /* PortalManager.swift */,
+				AAB082992A0F597E00A639D0 /* TransformExtensions.swift */,
+				AAB0829B2A0F597E00A639D0 /* Assets.xcassets */,
+				AAB0829A2A0F597E00A639D0 /* Info.plist */,
+				AAB082A92A0F597E00A639D0 /* Preview Content */,
+			);
+			path = PortalAR;
+			sourceTree = "<group>";
+		};
+		AAB0828F2A0F597E00A639D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AAB082942A0F597E00A639D0 /* PortalAR.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AAB082A92A0F597E00A639D0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AAB082A82A0F597E00A639D0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AAB082902A0F597E00A639D0 /* PortalAR */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AAB082A52A0F597E00A639D0 /* Build configuration list for PBXNativeTarget "PortalAR" */;
+			buildPhases = (
+				AAB082912A0F597E00A639D0 /* Sources */,
+				AAB082922A0F597E00A639D0 /* Frameworks */,
+				AAB082932A0F597E00A639D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PortalAR;
+			productName = PortalAR;
+			productReference = AAB082942A0F597E00A639D0 /* PortalAR.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AAB0828C2A0F597E00A639D0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					AAB082902A0F597E00A639D0 = {
+						CreatedOnToolsVersion = 15.0;
+						SystemCapabilities = {
+							com.apple.AugmentedReality = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = AAB082A22A0F597E00A639D0 /* Build configuration list for PBXProject "PortalAR" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AAB0828D2A0F597E00A639D0;
+			productRefGroup = AAB0828F2A0F597E00A639D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AAB082902A0F597E00A639D0 /* PortalAR */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AAB082932A0F597E00A639D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAB082A12A0F597E00A639D0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AAB082912A0F597E00A639D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAB0829F2A0F597E00A639D0 /* PortalManager.swift in Sources */,
+				AAB0829C2A0F597E00A639D0 /* PortalARApp.swift in Sources */,
+				AAB0829E2A0F597E00A639D0 /* PortalARView.swift in Sources */,
+				AAB082A02A0F597E00A639D0 /* TransformExtensions.swift in Sources */,
+				AAB0829D2A0F597E00A639D0 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AAB082A32A0F597E00A639D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				INFOPLIST_FILE = PortalAR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PortalAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AAB082A42A0F597E00A639D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				INFOPLIST_FILE = PortalAR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.PortalAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		AAB082A62A0F597E00A639D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 7CZGW7KVKP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PortalAR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josetzz.PortalAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		AAB082A72A0F597E00A639D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 7CZGW7KVKP;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = PortalAR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.josetzz.PortalAR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AAB082A22A0F597E00A639D0 /* Build configuration list for PBXProject "PortalAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAB082A32A0F597E00A639D0 /* Debug */,
+				AAB082A42A0F597E00A639D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AAB082A52A0F597E00A639D0 /* Build configuration list for PBXNativeTarget "PortalAR" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AAB082A62A0F597E00A639D0 /* Debug */,
+				AAB082A72A0F597E00A639D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AAB0828C2A0F597E00A639D0 /* Project object */;
+}
