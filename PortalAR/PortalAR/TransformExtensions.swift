@@ -13,7 +13,7 @@ extension SIMD3 where Scalar == Float {
 
     func horizontalRotationToFaceForward() -> simd_quatf? {
         let forward = SIMD3<Float>(0, 0, -1)
-        var horizontal = SIMD3<Float>(x, 0, z)
+        let horizontal = SIMD3<Float>(x, 0, z)
         guard let direction = horizontal.normalized3() else { return nil }
         return simd_quatf(from: forward, to: direction)
     }

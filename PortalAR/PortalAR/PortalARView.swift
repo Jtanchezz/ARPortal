@@ -3,8 +3,10 @@ import RealityKit
 import ARKit
 
 struct PortalARView: UIViewRepresentable {
+    @ObservedObject var experienceState: PortalExperienceState
+
     func makeCoordinator() -> Coordinator {
-        Coordinator()
+        Coordinator(state: experienceState)
     }
 
     func makeUIView(context: Context) -> ARView {
@@ -35,11 +37,16 @@ struct PortalARView: UIViewRepresentable {
     }
 
     final class Coordinator {
+        private let state: PortalExperienceState
         private var manager: PortalManager?
+
+        init(state: PortalExperienceState) {
+            self.state = state
+        }
 
         func attach(to arView: ARView) {
             if manager == nil {
-                manager = PortalManager(arView: arView)
+                manager = PortalManager(arView: arView, experienceState: state)
             }
         }
     }
