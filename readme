@@ -34,8 +34,8 @@ Está pensado como una experiencia de exposición académica.
 
 ## Tecnologías utilizadas
 
-- **Lenguaje:** Swift
-- **Interfaz de usuario:** SwiftUI
+- **Lenguaje:** Swift  
+- **Interfaz de usuario:** SwiftUI  
 - **Realidad aumentada y 3D:**
   - ARKit
   - RealityKit
