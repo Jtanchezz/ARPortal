@@ -1,0 +1,62 @@
+# PortalAR – Galería de proyectos en Realidad Aumentada
+
+PortalAR es una aplicación iOS que usa ARKit y RealityKit para crear un portal de realidad aumentada.  
+Al cruzar ese portal, el usuario entra en un cuarto virtual donde se muestran proyectos universitarios de estudiantes de Computer Science, en forma de imágenes o videos.
+
+La idea es convertir el espacio físico en una pequeña galería.
+
+---
+
+## Objetivo del proyecto
+
+El objetivo principal es ofrecer una forma distinta de presentar proyectos universitarios:
+
+- El usuario coloca un portal en el mundo real (sobre el piso o una mesa).
+- Al caminar a través de ese portal entra en una sala virtual.
+- Dentro de esa sala se muestran los proyectos: capturas de pantalla, videos cortos, etc.
+
+Está pensado como una experiencia de exposición académica.
+
+---
+
+## Resumen de funcionamiento
+
+1. La app abre la cámara en modo AR y comienza a detectar un plano horizontal.
+2. El usuario toca la pantalla para colocar el portal sobre ese plano.
+3. El portal se orienta automáticamente hacia la cámara.
+4. Cuando el usuario cruza el portal:
+   - Se activa el cuarto virtual.
+   - El fondo deja de ser la cámara y pasa a ser un entorno virtual.
+5. Dentro del cuarto se pueden mostrar imágenes y videos de los proyectos de los estudiantes.
+6. Al retroceder y salir del portal, el cuarto se oculta y se vuelve a ver el mundo real.
+
+---
+
+## Tecnologías utilizadas
+
+- **Lenguaje:** Swift
+- **Interfaz de usuario:** SwiftUI
+- **Realidad aumentada y 3D:**
+  - ARKit
+  - RealityKit
+- **Otros frameworks y librerías:**
+  - UIKit (gestos, ARCoachingOverlayView)
+  - simd (cálculo de vectores y rotaciones)
+
+---
+
+## Organización y estructura del código
+
+Estructura general del proyecto:
+
+```text
+PortalAR/
+└── PortalAR/
+    ├── PortalARApp.swift          # Punto de entrada de la app (SwiftUI App)
+    ├── ContentView.swift          # Vista principal: AR + instrucciones
+    ├── PortalARView.swift         # Integración de ARView (RealityKit) en SwiftUI
+    ├── PortalManager.swift        # Lógica del portal y del cuarto virtual
+    ├── TransformExtensions.swift  # Extensiones para vectores y rotaciones
+    ├── Info.plist                 # Configuración del target (permisos, etc.)
+    ├── Assets.xcassets            # Recursos gráficos (iconos, imágenes)
+    └── Preview Content/           # Recursos para los previews de SwiftUI
