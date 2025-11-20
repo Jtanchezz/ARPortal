@@ -14,127 +14,491 @@
       --color-secondary: #ffb703;
       --color-accent: #00bfa6;
       --color-bg: #f3f5fb;
-      --color-text: #1f2933;
+      --color-text: #0f172a;
       --color-muted: #6b7280;
-      --radius-lg: 16px;
-      --shadow-soft: 0 14px 35px rgba(15, 23, 42, 0.16);
-      --shadow-subtle: 0 6px 16px rgba(15, 23, 42, 0.08);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.16);
+      --shadow-subtle: 0 10px 25px rgba(15, 23, 42, 0.08);
+      --border-subtle: 1px solid rgba(148, 163, 184, 0.25);
+      --nav-height: 64px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top left, #dbeafe 0, #f9fafb 35%, #eef2ff 100%);
-      color: var(--color-text);
+    html, body {
       margin: 0;
       padding: 0;
     }
 
-    header {
-      background: linear-gradient(135deg, #002b5b, #004aad);
-      color: #fffbeb;
-      text-align: center;
-      padding: 42px 20px 52px;
-      position: relative;
-      overflow: hidden;
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 45%),
+        radial-gradient(circle at bottom right, #e0f2fe 0, transparent 55%),
+        #f8fafc;
+      color: var(--color-text);
+      -webkit-font-smoothing: antialiased;
     }
 
-    header::before {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%);
-      top: -60px;
-      right: -60px;
-      opacity: 0.9;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    header::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 60%);
-      bottom: -70px;
-      left: -40px;
-      opacity: 0.9;
+    /* NAVBAR */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.72),
+        rgba(15, 23, 42, 0.65),
+        rgba(15, 23, 42, 0.35)
+      );
+      color: #e5e7eb;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
     }
 
-    .header-content {
-      position: relative;
+    .navbar-inner {
       max-width: 1100px;
       margin: 0 auto;
-      z-index: 1;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: clamp(2.1rem, 3vw, 2.6rem);
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: conic-gradient(from 200deg, #38bdf8, #4f46e5, #22c55e, #38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.55), 0 12px 25px rgba(15, 23, 42, 0.55);
+    }
+
+    .nav-logo span {
+      width: 18px;
+      height: 18px;
+      border-radius: 8px;
+      background: radial-gradient(circle, #f9fafb 0, #dbeafe 55%, #a855f7 100%);
+    }
+
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-title-main {
+      font-size: 0.95rem;
+      font-weight: 600;
       letter-spacing: 0.03em;
     }
 
-    .header-subtitle {
-      margin-top: 10px;
-      font-size: 0.95rem;
-      max-width: 620px;
-      margin-left: auto;
-      margin-right: auto;
+    .nav-title-sub {
+      font-size: 0.7rem;
+      color: #cbd5f5;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-pill {
+      display: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      border: 1px solid rgba(148, 163, 184, 0.55);
       color: #e5e7eb;
     }
 
-    .header-badge {
+    .nav-btn {
+      font-size: 0.78rem;
+      border-radius: 999px;
+      padding: 8px 14px;
+      border: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: radial-gradient(circle at top left, #facc15 0, #f97316 45%, #ec4899 110%);
+      color: #111827;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .nav-btn span {
+      display: inline-block;
+      font-size: 1rem;
+      transform: translateY(1px);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.6);
+      filter: brightness(1.03);
+    }
+
+    /* HEADER / HERO */
+
+    header.hero {
+      position: relative;
+      overflow: hidden;
+      padding: 40px 18px 26px;
+      background: radial-gradient(circle at top left, #0b1120 0, #020617 55%, #020617 100%);
+      color: #f9fafb;
+    }
+
+    header.hero::before {
+      content: "";
+      position: absolute;
+      inset: -120px;
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.35), transparent 60%),
+        radial-gradient(circle at bottom right, rgba(244, 114, 182, 0.35), transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 28px;
+    }
+
+    @media (min-width: 880px) {
+      .hero-inner {
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        align-items: center;
+        gap: 36px;
+      }
+    }
+
+    .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 14px;
+      padding: 7px 14px;
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.32);
-      font-size: 0.75rem;
-      margin-bottom: 14px;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.16em;
+      color: #c7d2fe;
+      margin-bottom: 16px;
     }
 
-    .header-badge span {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
+    .hero-badge-dot {
+      width: 9px;
+      height: 9px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+      box-shadow: 0 0 14px rgba(34, 197, 94, 1);
     }
+
+    .hero-title {
+      font-size: clamp(2.15rem, 4vw, 2.7rem);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin: 0 0 10px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #38bdf8, #a855f7, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.96rem;
+      max-width: 640px;
+      color: #e5e7eb;
+      margin: 0 0 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta-item {
+      font-size: 0.75rem;
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      color: #cbd5f5;
+    }
+
+    .hero-meta-item strong {
+      color: #facc15;
+      font-weight: 600;
+    }
+
+    .hero-footer-note {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      max-width: 500px;
+    }
+
+    /* HERO SUMMARY CARD */
+
+    .hero-summary {
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.25), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(251, 191, 36, 0.25), transparent 65%),
+                  #020617;
+      border-radius: var(--radius-xl);
+      padding: 20px 18px 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-summary::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 110%, rgba(15, 23, 42, 0.8), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .hero-summary-inner {
+      position: relative;
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .hero-summary-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #e5e7eb;
+    }
+
+    .hero-summary-tag {
+      font-size: 0.72rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      color: #e5e7eb;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-summary-tag-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+    }
+
+    .hero-summary-value-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin: 4px 0 10px;
+    }
+
+    .hero-summary-amount {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    .hero-summary-amount span {
+      font-size: 0.95rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    .hero-summary-label {
+      text-align: right;
+      font-size: 0.74rem;
+      color: #cbd5f5;
+    }
+
+    .hero-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .hero-summary-chip {
+      border-radius: 14px;
+      padding: 8px 10px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      font-size: 0.78rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .hero-summary-chip-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #9ca3af;
+    }
+
+    .hero-summary-chip-value {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #e5e7eb;
+    }
+
+    .hero-summary-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 4px;
+      font-size: 0.75rem;
+      color: #9ca3af;
+    }
+
+    .hero-summary-footer span strong {
+      color: #f97316;
+    }
+
+    .hero-summary-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px dashed rgba(148, 163, 184, 0.75);
+      font-size: 0.69rem;
+    }
+
+    @media (max-width: 600px) {
+      .hero-summary-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* MAIN LAYOUT */
 
     main {
       max-width: 1100px;
-      margin: -30px auto 50px;
-      padding: 0 16px 40px;
+      margin: 0 auto 60px;
+      padding: 20px 16px 40px;
     }
 
-    .card {
-      background-color: #ffffff;
-      padding: 28px 26px;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-soft);
-      margin-bottom: 22px;
-    }
+    /* SECTION NAVIGATION */
 
-    .card-soft {
+    .section-nav {
+      margin: 8px 0 22px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
       box-shadow: var(--shadow-subtle);
-      border-radius: var(--radius-lg);
+      border: var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .section-nav-label {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-muted);
+      margin-right: 2px;
+      white-space: nowrap;
+    }
+
+    .section-nav-link {
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      color: #374151;
+      background: #f9fafb;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .section-nav-link:hover {
+      background: #e5edff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(148, 163, 184, 0.55);
+    }
+
+    /* CARD SECTIONS */
+
+    section.card {
       background-color: #ffffff;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-subtle);
+      padding: 22px 22px 20px;
+      margin-bottom: 22px;
+      border: var(--border-subtle);
+    }
+
+    section.card.accent {
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      background: radial-gradient(circle at top left, rgba(219, 234, 254, 0.75), #ffffff 55%);
+    }
+
+    .section-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-muted);
+      margin-bottom: 6px;
     }
 
     h2 {
       color: var(--color-primary);
-      margin-top: 0;
-      font-size: 1.25rem;
-      display: flex;
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
     }
@@ -148,37 +512,81 @@
       background: linear-gradient(180deg, var(--color-secondary), var(--color-primary));
     }
 
-    .section-tag {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-muted);
-      margin-bottom: 4px;
-    }
-
     p {
       font-size: 0.92rem;
       line-height: 1.6;
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       color: var(--color-text);
     }
 
     .muted {
       color: var(--color-muted);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
     }
+
+    .subheading {
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #111827;
+    }
+
+    /* GRID LAYOUTS INSIDE SECTIONS */
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .split-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .section-highlight-box {
+      border-radius: 18px;
+      background: #f9fafb;
+      border: 1px dashed rgba(148, 163, 184, 0.8);
+      padding: 12px 14px;
+      font-size: 0.86rem;
+      display: grid;
+      gap: 4px;
+    }
+
+    .section-highlight-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 0.86rem;
+    }
+
+    .section-highlight-row span:first-child {
+      color: var(--color-muted);
+    }
+
+    .section-highlight-row span:last-child {
+      font-weight: 600;
+      color: var(--color-primary);
+    }
+
+    /* TABLES */
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 18px;
+      margin-top: 14px;
       font-size: 0.9rem;
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
     }
 
     th, td {
-      padding: 11px 14px;
+      padding: 10px 12px;
       text-align: left;
       border-bottom: 1px solid #e5e7eb;
     }
@@ -187,7 +595,7 @@
       background: linear-gradient(90deg, #004aad, #2563eb);
       color: #f9fafb;
       font-weight: 500;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       position: sticky;
       top: 0;
       z-index: 1;
@@ -210,31 +618,20 @@
     .totals-strip {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
       margin-top: 10px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
     }
 
     .totals-strip-item {
-      padding: 7px 11px;
+      padding: 7px 10px;
       border-radius: 999px;
       background-color: #f3f4ff;
       border: 1px dashed #c7d2fe;
+      white-space: nowrap;
     }
 
-    .subheading {
-      margin-top: 14px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #111827;
-    }
-
-    footer {
-      text-align: center;
-      padding: 16px 20px 26px;
-      color: var(--color-muted);
-      font-size: 0.8rem;
-    }
+    /* LINKS */
 
     a.source-link {
       color: #2563eb;
@@ -244,326 +641,478 @@
     a.source-link:hover {
       text-decoration: underline;
     }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+      padding: 16px 20px 28px;
+      color: var(--color-muted);
+      font-size: 0.8rem;
+    }
+
+    /* SMALL IMPROVEMENTS */
+
+    strong {
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header.hero {
+        padding-top: 26px;
+      }
+      .nav-btn {
+        font-size: 0.74rem;
+        padding-inline: 10px;
+      }
+      section.card {
+        padding-inline: 16px;
+      }
+    }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="header-content">
-    <div class="header-badge">
-      <span></span>
-      Propuesta económica · PortalAR – Galería en Realidad Aumentada
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <div class="nav-brand">
+        <div class="nav-logo"><span></span></div>
+        <div class="nav-title">
+          <div class="nav-title-main">PortalAR</div>
+          <div class="nav-title-sub">Propuesta económica</div>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <div class="nav-pill">Galería en Realidad Aumentada</div>
+        <button class="nav-btn" type="button" onclick="window.print()">
+          <span>⬇</span> Exportar / Imprimir
+        </button>
+      </div>
     </div>
-    <h1>Propuesta Económica – PortalAR (Galería en Realidad Aumentada)</h1>
-    <p class="header-subtitle">
-      Desarrollo e implementación de PortalAR, una experiencia de galería en realidad aumentada
-      para presentar proyectos universitarios mediante un portal AR y un cuarto virtual interactivo.
-    </p>
-  </div>
-</header>
+  </nav>
 
-<main>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Propuesta económica · PortalAR
+        </div>
+        <h1 class="hero-title">
+          Propuesta Económica – <span class="hero-highlight">PortalAR</span>
+        </h1>
+        <p class="hero-subtitle">
+          Desarrollo e implementación de PortalAR, una experiencia de galería en realidad aumentada
+          para presentar proyectos universitarios mediante un portal AR y un cuarto virtual interactivo.
+        </p>
 
-  <!-- Resumen Ejecutivo -->
-  <section class="card">
-    <div class="section-tag">Resumen ejecutivo</div>
-    <h2>Resumen del proyecto</h2>
-    <p>
-      La propuesta cubre el diseño, desarrollo e implementación de <strong>PortalAR</strong>, una
-      aplicación iOS que utiliza ARKit y RealityKit para crear un portal de realidad aumentada que
-      lleva a los usuarios a una sala virtual donde se muestran proyectos universitarios en forma
-      de imágenes o videos.
-    </p>
-    <p>
-      El esfuerzo estimado es de <strong>808 horas</strong>, equivalentes a
-      <strong>101 jornadas de 8 horas</strong>. La inversión por mano de obra se estima en
-      <strong>22,800 USD</strong>. Los costos con terceros para el primer año de operación se
-      descomponen en aproximadamente <strong>100 USD</strong> de servicios de configuración única
-      y <strong>231 USD</strong> de costos recurrentes (hosting, dominio, SSL y cuenta de
-      desarrollador Apple), para un subtotal de <strong>23,131 USD</strong> sin impuestos.
-    </p>
-    <p>
-      Asumiendo facturación en Guatemala y la aplicación del IVA general del
-      <strong>12%</strong>, el total aproximado asciende a
-      <strong>≈ 25,900 USD</strong> con impuestos incluidos.
-    </p>
-    <div class="totals-strip">
-      <div class="totals-strip-item"><strong>Mano de obra:</strong> 22,800 USD</div>
-      <div class="totals-strip-item"><strong>Costos iniciales (terceros):</strong> 100 USD</div>
-      <div class="totals-strip-item"><strong>Costos recurrentes 1er año:</strong> 231 USD</div>
-      <div class="totals-strip-item"><strong>Subtotal sin IVA:</strong> 23,131 USD</div>
-      <div class="totals-strip-item"><strong>IVA 12% (ref.):</strong> ≈ 2,776 USD</div>
-      <div class="totals-strip-item"><strong>Total con IVA:</strong> ≈ 25,900 USD</div>
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <strong>808 h</strong> · 101 jornadas de 8 h
+          </div>
+          <div class="hero-meta-item">
+            <strong>22,800 USD</strong> inversión en mano de obra
+          </div>
+          <div class="hero-meta-item">
+            Costos terceros 1er año: <strong>331 USD</strong>
+          </div>
+        </div>
+
+        <p class="hero-footer-note">
+          Cifras expresadas en dólares estadounidenses (USD). Los montos son referenciales y
+          pueden ajustarse según el alcance final y el esquema de facturación acordado.
+        </p>
+      </div>
+
+      <!-- SUMMARY CARD -->
+      <aside class="hero-summary">
+        <div class="hero-summary-inner">
+          <div class="hero-summary-header">
+            <div class="hero-summary-title">Resumen financiero</div>
+            <div class="hero-summary-tag">
+              <span class="hero-summary-tag-dot"></span>
+              1er año de operación
+            </div>
+          </div>
+
+          <div class="hero-summary-value-main">
+            <div class="hero-summary-amount">
+              ≈ 25,900 <span>USD</span>
+            </div>
+            <div class="hero-summary-label">
+              Total con IVA 12%<br />
+              (referencial Guatemala)
+            </div>
+          </div>
+
+          <div class="hero-summary-grid">
+            <div class="hero-summary-chip">
+              <div class="hero-summary-chip-label">Mano de obra</div>
+              <div class="hero-summary-chip-value">22,800 USD</div>
+            </div>
+            <div class="hero-summary-chip">
+              <div class="hero-summary-chip-label">Terceros (único)</div>
+              <div class="hero-summary-chip-value">100 USD</div>
+            </div>
+            <div class="hero-summary-chip">
+              <div class="hero-summary-chip-label">Terceros (recurrente)</div>
+              <div class="hero-summary-chip-value">231 USD / año</div>
+            </div>
+            <div class="hero-summary-chip">
+              <div class="hero-summary-chip-label">Tarifa promedio</div>
+              <div class="hero-summary-chip-value">≈ 28.2 USD / h</div>
+            </div>
+          </div>
+
+          <div class="hero-summary-footer">
+            <span>
+              Subtotal sin IVA: <strong>23,131 USD</strong>
+            </span>
+            <span class="hero-summary-badge">
+              IVA ref. (12%): ≈ 2,776 USD
+            </span>
+          </div>
+        </div>
+      </aside>
     </div>
-    <p class="muted">
-      Montos referenciales y ajustables según el alcance final y el esquema de facturación.
-    </p>
-  </section>
+  </header>
 
-  <!-- Distribución General del Proyecto -->
-  <section class="card card-soft">
-    <div class="section-tag">Esfuerzo estimado</div>
-    <h2>Distribución general del proyecto</h2>
-    <p>
-      Distribución de horas por tipo de actividad para el desarrollo de PortalAR.
-    </p>
-    <table>
-      <tr>
-        <th>Grupo</th>
-        <th>Aplicación</th>
-        <th>Horas</th>
-      </tr>
-      <tr><td>Gestión</td><td>Coordinación general del proyecto</td><td>16</td></tr>
-      <tr><td>Seguimiento de Tareas</td><td>Gestión de backlog y entregables</td><td>40</td></tr>
-      <tr><td>Análisis</td><td>Requerimientos y diseño de experiencia AR</td><td>24</td></tr>
-      <tr><td>Documentación</td><td>Guías, manuales y especificaciones</td><td>40</td></tr>
-      <tr><td>Desarrollo</td><td>Implementación de PortalAR (iOS + AR)</td><td>480</td></tr>
-      <tr><td>Pruebas y QA</td><td>Testing funcional, AR y experiencia de usuario</td><td>144</td></tr>
-      <tr><td>Implementación</td><td>Despliegue, publicación y ajustes finales</td><td>48</td></tr>
-      <tr><td>Soporte</td><td>Soporte post-despliegue inicial</td><td>24</td></tr>
-      <tr class="total-row"><td colspan="2">Total</td><td>808</td></tr>
-    </table>
-    <p class="muted">
-      808 horas ≈ 101 jornadas de 8 horas. La duración en calendario dependerá de la
-      dedicación semanal acordada.
-    </p>
-  </section>
-
-  <!-- Costos Propuestos - Nuestro Equipo -->
-  <section class="card card-soft">
-    <div class="section-tag">Inversión en talento</div>
-    <h2>Costos propuestos – Nuestro equipo</h2>
-    <p>
-      Costos expresados en jornadas de 8 horas, equilibrando un Jefe de Proyecto con experiencia
-      y un equipo de analistas/programadores especializados en iOS, ARKit y RealityKit.
-    </p>
-
-    <table>
-      <tr>
-        <th>Perfil</th>
-        <th>Jornadas</th>
-        <th>Tarifa (USD/jornada)</th>
-        <th>Total (USD)</th>
-      </tr>
-      <tr>
-        <td>Jefe de Proyecto</td>
-        <td>26</td>
-        <td>300</td>
-        <td>7,800</td>
-      </tr>
-      <tr>
-        <td>Analistas Programadores</td>
-        <td>75</td>
-        <td>200</td>
-        <td>15,000</td>
-      </tr>
-      <tr class="total-row">
-        <td colspan="3">Total mano de obra del proyecto</td>
-        <td>22,800</td>
-      </tr>
-    </table>
-
-    <div class="totals-strip">
-      <div class="totals-strip-item"><strong>Jornadas totales:</strong> 101</div>
-      <div class="totals-strip-item"><strong>Horas totales:</strong> 808</div>
-      <div class="totals-strip-item"><strong>Tarifa promedio por hora:</strong> ≈ 28.2 USD/h</div>
+  <main>
+    <!-- SECTION NAV -->
+    <div class="section-nav">
+      <span class="section-nav-label">Secciones</span>
+      <a class="section-nav-link" href="#resumen">Resumen ejecutivo</a>
+      <a class="section-nav-link" href="#esfuerzo">Esfuerzo estimado</a>
+      <a class="section-nav-link" href="#equipo">Costos de equipo</a>
+      <a class="section-nav-link" href="#competencia">Comparación</a>
+      <a class="section-nav-link" href="#adicionales">Costos adicionales</a>
+      <a class="section-nav-link" href="#impuestos">Impuestos</a>
+      <a class="section-nav-link" href="#conclusion">Conclusión</a>
     </div>
-  </section>
 
-  <!-- Comparación con la Competencia -->
-  <section class="card card-soft">
-    <div class="section-tag">Contexto de mercado</div>
-    <h2>Comparación con la competencia</h2>
-    <p>
-      Comparación referencial usando la tarifa horaria promedio en Estados Unidos para un
-      ingeniero de software, aplicada a las mismas <strong>808 horas</strong>
-      estimadas para PortalAR.
-    </p>
+    <!-- Resumen Ejecutivo -->
+    <section class="card accent" id="resumen">
+      <div class="split-layout">
+        <div>
+          <div class="section-tag">Resumen ejecutivo</div>
+          <h2>Resumen del proyecto</h2>
+          <p>
+            La propuesta cubre el diseño, desarrollo e implementación de <strong>PortalAR</strong>, una
+            aplicación iOS que utiliza ARKit y RealityKit para crear un portal de realidad aumentada que
+            lleva a los usuarios a una sala virtual donde se muestran proyectos universitarios en forma
+            de imágenes o videos.
+          </p>
+          <p>
+            El esfuerzo estimado es de <strong>808 horas</strong>, equivalentes a
+            <strong>101 jornadas de 8 horas</strong>. La inversión por mano de obra se estima en
+            <strong>22,800 USD</strong>. Los costos con terceros para el primer año de operación se
+            descomponen en aproximadamente <strong>100 USD</strong> de servicios de configuración única
+            y <strong>231 USD</strong> de costos recurrentes (hosting, dominio, SSL y cuenta de
+            desarrollador Apple), para un subtotal de <strong>23,131 USD</strong> sin impuestos.
+          </p>
+          <p>
+            Asumiendo facturación en Guatemala y la aplicación del IVA general del
+            <strong>12%</strong>, el total aproximado asciende a
+            <strong>≈ 25,900 USD</strong> con impuestos incluidos.
+          </p>
+        </div>
+        <div>
+          <div class="section-highlight-box">
+            <div class="section-highlight-row">
+              <span>Mano de obra</span>
+              <span>22,800 USD</span>
+            </div>
+            <div class="section-highlight-row">
+              <span>Costos iniciales (terceros)</span>
+              <span>100 USD</span>
+            </div>
+            <div class="section-highlight-row">
+              <span>Costos recurrentes 1er año</span>
+              <span>231 USD</span>
+            </div>
+            <div class="section-highlight-row">
+              <span>Subtotal sin IVA</span>
+              <span>23,131 USD</span>
+            </div>
+            <div class="section-highlight-row">
+              <span>IVA 12% (referencial)</span>
+              <span>≈ 2,776 USD</span>
+            </div>
+            <div class="section-highlight-row">
+              <span>Total con IVA</span>
+              <span>≈ 25,900 USD</span>
+            </div>
+          </div>
 
-    <table>
-      <tr>
-        <th>Escenario</th>
-        <th>Tarifa promedio (USD/h)</th>
-        <th>Costo estimado para 808 h (USD)</th>
-      </tr>
-      <tr>
-        <td>Competencia promedio (ingeniero de software EE. UU.)</td>
-        <td>66.40</td>
-        <td>≈ 53,651</td>
-      </tr>
-      <tr class="total-row">
-        <td>Propuesta PortalAR (equipo dedicado)</td>
-        <td>≈ 28.2</td>
-        <td>22,800</td>
-      </tr>
-    </table>
+          <div class="totals-strip">
+            <div class="totals-strip-item"><strong>Mano de obra:</strong> 22,800 USD</div>
+            <div class="totals-strip-item"><strong>Costos iniciales:</strong> 100 USD</div>
+            <div class="totals-strip-item"><strong>Recurrentes 1er año:</strong> 231 USD</div>
+          </div>
 
-    <p class="muted">
-      Fuente:
-      <a class="source-link" href="https://www.bls.gov/oes/2023/may/oes151252.htm" target="_blank" rel="noopener noreferrer">
-        U.S. Bureau of Labor Statistics – Occupational Employment and Wages, May 2023, Software Developers (media nacional 66.40 USD/h)
-      </a>.
-    </p>
-  </section>
+          <p class="muted" style="margin-top:10px;">
+            Montos referenciales y ajustables según el alcance final y el esquema de facturación.
+          </p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Costos Adicionales -->
-  <section class="card card-soft">
-    <div class="section-tag">Infraestructura y servicios</div>
-    <h2>Costos adicionales (1er año de operación)</h2>
-    <p>
-      Separación de costos fijos (una sola vez) y costos variables/recurrentes asociados a la
-      operación de PortalAR durante el primer año.
-    </p>
+    <!-- Distribución General del Proyecto -->
+    <section class="card" id="esfuerzo">
+      <div class="section-tag">Esfuerzo estimado</div>
+      <h2>Distribución general del proyecto</h2>
+      <p>
+        Distribución de horas por tipo de actividad para el desarrollo de PortalAR.
+      </p>
+      <table>
+        <tr>
+          <th>Grupo</th>
+          <th>Aplicación</th>
+          <th>Horas</th>
+        </tr>
+        <tr><td>Gestión</td><td>Coordinación general del proyecto</td><td>16</td></tr>
+        <tr><td>Seguimiento de Tareas</td><td>Gestión de backlog y entregables</td><td>40</td></tr>
+        <tr><td>Análisis</td><td>Requerimientos y diseño de experiencia AR</td><td>24</td></tr>
+        <tr><td>Documentación</td><td>Guías, manuales y especificaciones</td><td>40</td></tr>
+        <tr><td>Desarrollo</td><td>Implementación de PortalAR (iOS + AR)</td><td>480</td></tr>
+        <tr><td>Pruebas y QA</td><td>Testing funcional, AR y experiencia de usuario</td><td>144</td></tr>
+        <tr><td>Implementación</td><td>Despliegue, publicación y ajustes finales</td><td>48</td></tr>
+        <tr><td>Soporte</td><td>Soporte post-despliegue inicial</td><td>24</td></tr>
+        <tr class="total-row"><td colspan="2">Total</td><td>808</td></tr>
+      </table>
+      <p class="muted">
+        808 horas ≈ 101 jornadas de 8 horas. La duración en calendario dependerá de la
+        dedicación semanal acordada.
+      </p>
+    </section>
 
-    <div class="subheading">Costos iniciales (únicos)</div>
-    <table>
-      <tr>
-        <th>Concepto</th>
-        <th>Monto (USD)</th>
-        <th>Nota</th>
-      </tr>
-      <tr>
-        <td>Configuración pasarela de pago (Stripe / PayPal – sandbox y live)</td>
-        <td>100</td>
-        <td>Servicio de configuración y pruebas (único)</td>
-      </tr>
-      <tr class="total-row">
-        <td>Total costos iniciales de terceros</td>
-        <td colspan="2">100</td>
-      </tr>
-    </table>
+    <!-- Costos Propuestos - Nuestro Equipo -->
+    <section class="card" id="equipo">
+      <div class="section-tag">Inversión en talento</div>
+      <h2>Costos propuestos – Nuestro equipo</h2>
+      <p>
+        Costos expresados en jornadas de 8 horas, equilibrando un Jefe de Proyecto con experiencia
+        y un equipo de analistas/programadores especializados en iOS, ARKit y RealityKit.
+      </p>
 
-    <div class="subheading">Costos recurrentes (1 año de despliegue)</div>
-    <table>
-      <tr>
-        <th>Concepto</th>
-        <th>Monto estimado (USD/año)</th>
-        <th>Nota</th>
-      </tr>
-      <tr>
-        <td>Hosting app / API (cloud)</td>
-        <td>120</td>
-        <td>≈ 10 USD/mes en plan básico (~1 GB RAM) en proveedores tipo DigitalOcean / Lightsail</td>
-      </tr>
-      <tr>
-        <td>Dominio .com</td>
-        <td>12</td>
-        <td>Registro anual de dominio estándar (.com)</td>
-      </tr>
-      <tr>
-        <td>Certificado SSL</td>
-        <td>0</td>
-        <td>Uso de Let's Encrypt / Cloudflare (sin coste adicional)</td>
-      </tr>
-      <tr>
-        <td>Cuenta de Desarrollador Apple (Apple Developer Program)</td>
-        <td>99</td>
-        <td>Anual · necesaria para publicar apps iOS en App Store</td>
-      </tr>
-      <tr class="total-row">
-        <td>Total costos recurrentes 1er año</td>
-        <td colspan="2">231</td>
-      </tr>
-    </table>
+      <table>
+        <tr>
+          <th>Perfil</th>
+          <th>Jornadas</th>
+          <th>Tarifa (USD/jornada)</th>
+          <th>Total (USD)</th>
+        </tr>
+        <tr>
+          <td>Jefe de Proyecto</td>
+          <td>26</td>
+          <td>300</td>
+          <td>7,800</td>
+        </tr>
+        <tr>
+          <td>Analistas Programadores</td>
+          <td>75</td>
+          <td>200</td>
+          <td>15,000</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="3">Total mano de obra del proyecto</td>
+          <td>22,800</td>
+        </tr>
+      </table>
 
-    <p class="muted">
-      Los entornos de pruebas de Stripe y PayPal (sandbox) no tienen costo de licenciamiento;
-      el monto de 100 USD corresponde a la configuración inicial como servicio profesional.
-    </p>
-    <p class="muted">
-      Referencias de precios:
-      <a class="source-link" href="https://www.digitalocean.com/pricing/droplets" target="_blank" rel="noopener noreferrer">
-        DigitalOcean – Droplets básicos desde ~6 USD/mes
-      </a>,
-      <a class="source-link" href="https://aws.amazon.com/es/lightsail/pricing/" target="_blank" rel="noopener noreferrer">
-        AWS Lightsail – instancias desde ~5–10 USD/mes
-      </a>,
-      <a class="source-link" href="https://elementor.com/blog/how-much-does-a-domain-name-cost-2/" target="_blank" rel="noopener noreferrer">
-        Coste típico dominios .com (10–20 USD/año)
-      </a>,
-      <a class="source-link" href="https://letsencrypt.org/es/" target="_blank" rel="noopener noreferrer">
-        Let's Encrypt – certificados SSL gratuitos
-      </a>,
-      <a class="source-link" href="https://developer.apple.com/programs/enroll/" target="_blank" rel="noopener noreferrer">
-        Apple Developer Program – 99 USD/año
-      </a>,
-      <a class="source-link" href="https://docs.stripe.com/sandboxes" target="_blank" rel="noopener noreferrer">
-        Stripe – entorno de pruebas sin coste
-      </a>,
-      <a class="source-link" href="https://developer.paypal.com/tools/sandbox/" target="_blank" rel="noopener noreferrer">
-        PayPal – sandbox de pruebas
-      </a>.
-    </p>
-  </section>
+      <div class="totals-strip">
+        <div class="totals-strip-item"><strong>Jornadas totales:</strong> 101</div>
+        <div class="totals-strip-item"><strong>Horas totales:</strong> 808</div>
+        <div class="totals-strip-item"><strong>Tarifa promedio por hora:</strong> ≈ 28.2 USD/h</div>
+      </div>
+    </section>
 
-  <!-- Impuestos -->
-  <section class="card card-soft">
-    <div class="section-tag">Impuestos (referencia Guatemala)</div>
-    <h2>Resumen de inversión con impuestos</h2>
-    <table>
-      <tr>
-        <th>Concepto</th>
-        <th>Monto (USD)</th>
-      </tr>
-      <tr>
-        <td>Mano de obra (PortalAR)</td>
-        <td>22,800</td>
-      </tr>
-      <tr>
-        <td>Costos iniciales de terceros</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <td>Costos recurrentes 1er año</td>
-        <td>231</td>
-      </tr>
-      <tr class="total-row">
-        <td>Subtotal sin IVA</td>
-        <td>23,131</td>
-      </tr>
-      <tr>
-        <td>IVA 12% (referencial)</td>
-        <td>≈ 2,776</td>
-      </tr>
-      <tr class="total-row">
-        <td>Total con IVA</td>
-        <td>≈ 25,900</td>
-      </tr>
-    </table>
-    <p class="muted">
-      Referencias del IVA general del 12&nbsp;% en Guatemala:
-      <a class="source-link" href="https://en.portal.sat.gob.gt/portal/preguntas-frecuentes/principales-impuestos-guatemala/" target="_blank" rel="noopener noreferrer">
-        SAT Guatemala – Principales impuestos
-      </a>,
-      <a class="source-link" href="https://taxsummaries.pwc.com/guatemala/corporate/other-taxes" target="_blank" rel="noopener noreferrer">
-        PWC Tax Summaries – Guatemala VAT 12&nbsp;%
-      </a>.
-    </p>
-  </section>
+    <!-- Comparación con la Competencia -->
+    <section class="card" id="competencia">
+      <div class="section-tag">Contexto de mercado</div>
+      <h2>Comparación con la competencia</h2>
+      <p>
+        Comparación referencial usando la tarifa horaria promedio en Estados Unidos para un
+        ingeniero de software, aplicada a las mismas <strong>808 horas</strong>
+        estimadas para PortalAR.
+      </p>
 
-  <!-- Análisis y Conclusión -->
-  <section class="card">
-    <div class="section-tag">Conclusión</div>
-    <h2>Análisis y conclusión</h2>
-    <p>
-      La inversión estimada para PortalAR, incluyendo desarrollo completo y costos de terceros del
-      primer año, es de aproximadamente <strong>23,131 USD</strong> sin impuestos, o cerca de
-      <strong>25,900 USD</strong> con IVA incluido (12%).
-    </p>
-    <p>
-      PortalAR ofrece una forma distinta y moderna de presentar proyectos universitarios,
-      transformando un espacio físico en una galería en realidad aumentada. Desde el punto de
-      vista “BI”, la propuesta privilegia indicadores claros (horas, jornadas, tarifas y costos
-      fijos/variables) por encima de texto, dejando la puerta abierta a incorporar analíticas de
-      uso y comportamiento en futuras fases.
-    </p>
-  </section>
+      <table>
+        <tr>
+          <th>Escenario</th>
+          <th>Tarifa promedio (USD/h)</th>
+          <th>Costo estimado para 808 h (USD)</th>
+        </tr>
+        <tr>
+          <td>Competencia promedio (ingeniero de software EE. UU.)</td>
+          <td>66.40</td>
+          <td>≈ 53,651</td>
+        </tr>
+        <tr class="total-row">
+          <td>Propuesta PortalAR (equipo dedicado)</td>
+          <td>≈ 28.2</td>
+          <td>22,800</td>
+        </tr>
+      </table>
 
-</main>
+      <p class="muted">
+        Fuente:
+        <a class="source-link" href="https://www.bls.gov/oes/2023/may/oes151252.htm" target="_blank" rel="noopener noreferrer">
+          U.S. Bureau of Labor Statistics – Occupational Employment and Wages, May 2023, Software Developers (media nacional 66.40 USD/h)
+        </a>.
+      </p>
+    </section>
 
-<footer>
-  Propuesta confidencial. Uso exclusivo para evaluación interna del cliente.
-</footer>
+    <!-- Costos Adicionales -->
+    <section class="card" id="adicionales">
+      <div class="section-tag">Infraestructura y servicios</div>
+      <h2>Costos adicionales (1er año de operación)</h2>
+      <p>
+        Separación de costos fijos (una sola vez) y costos variables/recurrentes asociados a la
+        operación de PortalAR durante el primer año.
+      </p>
+
+      <div class="subheading">Costos iniciales (únicos)</div>
+      <table>
+        <tr>
+          <th>Concepto</th>
+          <th>Monto (USD)</th>
+          <th>Nota</th>
+        </tr>
+        <tr>
+          <td>Configuración pasarela de pago (Stripe / PayPal – sandbox y live)</td>
+          <td>100</td>
+          <td>Servicio de configuración y pruebas (único)</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total costos iniciales de terceros</td>
+          <td colspan="2">100</td>
+        </tr>
+      </table>
+
+      <div class="subheading">Costos recurrentes (1 año de despliegue)</div>
+      <table>
+        <tr>
+          <th>Concepto</th>
+          <th>Monto estimado (USD/año)</th>
+          <th>Nota</th>
+        </tr>
+        <tr>
+          <td>Hosting app / API (cloud)</td>
+          <td>120</td>
+          <td>≈ 10 USD/mes en plan básico (~1 GB RAM) en proveedores tipo DigitalOcean / Lightsail</td>
+        </tr>
+        <tr>
+          <td>Dominio .com</td>
+          <td>12</td>
+          <td>Registro anual de dominio estándar (.com)</td>
+        </tr>
+        <tr>
+          <td>Certificado SSL</td>
+          <td>0</td>
+          <td>Uso de certificados SSL emitidos por autoridades gratuitas o incluidos en el proveedor</td>
+        </tr>
+        <tr>
+          <td>Cuenta de Desarrollador Apple (Apple Developer Program)</td>
+          <td>99</td>
+          <td>Anual · necesaria para publicar apps iOS en App Store</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total costos recurrentes 1er año</td>
+          <td colspan="2">231</td>
+        </tr>
+      </table>
+
+      <p class="muted">
+        El monto de 100 USD corresponde a la configuración inicial de la pasarela de pago
+        como servicio profesional.
+      </p>
+      <p class="muted">
+        Referencias de precios:
+        <a class="source-link" href="https://www.digitalocean.com/pricing/droplets" target="_blank" rel="noopener noreferrer">
+          DigitalOcean – Droplets básicos desde ~6 USD/mes
+        </a>,
+        <a class="source-link" href="https://aws.amazon.com/es/lightsail/pricing/" target="_blank" rel="noopener noreferrer">
+          AWS Lightsail – instancias desde ~5–10 USD/mes
+        </a>,
+        <a class="source-link" href="https://elementor.com/blog/how-much-does-a-domain-name-cost-2/" target="_blank" rel="noopener noreferrer">
+          Coste típico dominios .com (10–20 USD/año)
+        </a>,
+        <a class="source-link" href="https://developer.apple.com/programs/enroll/" target="_blank" rel="noopener noreferrer">
+          Apple Developer Program – 99 USD/año
+        </a>.
+      </p>
+    </section>
+
+    <!-- Impuestos -->
+    <section class="card" id="impuestos">
+      <div class="section-tag">Impuestos (referencia Guatemala)</div>
+      <h2>Resumen de inversión con impuestos</h2>
+      <table>
+        <tr>
+          <th>Concepto</th>
+          <th>Monto (USD)</th>
+        </tr>
+        <tr>
+          <td>Mano de obra (PortalAR)</td>
+          <td>22,800</td>
+        </tr>
+        <tr>
+          <td>Costos iniciales de terceros</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>Costos recurrentes 1er año</td>
+          <td>231</td>
+        </tr>
+        <tr class="total-row">
+          <td>Subtotal sin IVA</td>
+          <td>23,131</td>
+        </tr>
+        <tr>
+          <td>IVA 12% (referencial)</td>
+          <td>≈ 2,776</td>
+        </tr>
+        <tr class="total-row">
+          <td>Total con IVA</td>
+          <td>≈ 25,900</td>
+        </tr>
+      </table>
+      <p class="muted">
+        Referencias del IVA general del 12&nbsp;% en Guatemala:
+        <a class="source-link" href="https://en.portal.sat.gob.gt/portal/preguntas-frecuentes/principales-impuestos-guatemala/" target="_blank" rel="noopener noreferrer">
+          SAT Guatemala – Principales impuestos
+        </a>,
+        <a class="source-link" href="https://taxsummaries.pwc.com/guatemala/corporate/other-taxes" target="_blank" rel="noopener noreferrer">
+          PWC Tax Summaries – Guatemala VAT 12&nbsp;%
+        </a>.
+      </p>
+    </section>
+
+    <!-- Análisis y Conclusión -->
+    <section class="card" id="conclusion">
+      <div class="section-tag">Conclusión</div>
+      <h2>Análisis y conclusión</h2>
+      <p>
+        La inversión estimada para PortalAR, incluyendo desarrollo completo y costos de terceros del
+        primer año, es de aproximadamente <strong>23,131 USD</strong> sin impuestos, o cerca de
+        <strong>25,900 USD</strong> con IVA incluido (12%).
+      </p>
+      <p>
+        PortalAR ofrece una forma distinta y moderna de presentar proyectos universitarios,
+        transformando un espacio físico en una galería en realidad aumentada. Desde el punto de
+        vista “BI”, la propuesta privilegia indicadores claros (horas, jornadas, tarifas y costos
+        fijos/variables) por encima de texto, dejando la puerta abierta a incorporar analíticas de
+        uso y comportamiento en futuras fases.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Propuesta confidencial. Uso exclusivo para evaluación interna del cliente.
+  </footer>
 
 </body>
 </html>
