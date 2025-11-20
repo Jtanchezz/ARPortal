@@ -48,6 +48,45 @@
       text-decoration: none;
     }
 
+    /* ===== Scrollbar personalizado ===== */
+
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: #3b82f6 #e5e7eb; /* Firefox */
+    }
+
+    body::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    body::-webkit-scrollbar-track {
+      background: #e5e7eb;
+    }
+
+    body::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #3b82f6, #6366f1, #ec4899);
+      border-radius: 999px;
+      border: 2px solid #e5e7eb;
+    }
+
+    body::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #2563eb, #4f46e5, #db2777);
+    }
+
+    /* ===== Barra de progreso de scroll ===== */
+
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #3b82f6, #a855f7, #f97316);
+      z-index: 50;
+      transform-origin: left center;
+      transition: width 0.08s ease-out;
+    }
+
     /* NAVBAR */
 
     .navbar {
@@ -673,6 +712,9 @@
 </head>
 <body>
 
+  <!-- Barra de progreso de scroll -->
+  <div class="scroll-progress"></div>
+
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="navbar-inner">
@@ -1114,5 +1156,22 @@
     Propuesta confidencial. Uso exclusivo para evaluación interna del cliente.
   </footer>
 
+  <!-- Script barra de progreso -->
+  <script>
+    (function () {
+      const progressBar = document.querySelector('.scroll-progress');
+
+      function updateProgress() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+      }
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      document.addEventListener('DOMContentLoaded', updateProgress);
+    })();
+  </script>
 </body>
 </html>
