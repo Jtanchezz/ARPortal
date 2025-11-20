@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propuesta Económica – PortalAR (Galería en Realidad Aumentada)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-primary: #004aad;
+      --color-primary-soft: #eaf1ff;
+      --color-secondary: #ffb703;
+      --color-accent: #00bfa6;
+      --color-bg: #f3f5fb;
+      --color-text: #1f2933;
+      --color-muted: #6b7280;
+      --radius-lg: 16px;
+      --shadow-soft: 0 14px 35px rgba(15, 23, 42, 0.16);
+      --shadow-subtle: 0 6px 16px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #dbeafe 0, #f9fafb 35%, #eef2ff 100%);
+      color: var(--color-text);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(135deg, #002b5b, #004aad);
+      color: #fffbeb;
+      text-align: center;
+      padding: 42px 20px 52px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 60%);
+      top: -60px;
+      right: -60px;
+      opacity: 0.9;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.14), transparent 60%);
+      bottom: -70px;
+      left: -40px;
+      opacity: 0.9;
+    }
+
+    .header-content {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      letter-spacing: 0.03em;
+    }
+
+    .header-subtitle {
+      margin-top: 10px;
+      font-size: 0.95rem;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #e5e7eb;
+    }
+
+    .header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.32);
+      font-size: 0.75rem;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .header-badge span {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: -30px auto 50px;
+      padding: 0 16px 40px;
+    }
+
+    .card {
+      background-color: #ffffff;
+      padding: 28px 26px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 22px;
+    }
+
+    .card-soft {
+      box-shadow: var(--shadow-subtle);
+      border-radius: var(--radius-lg);
+      background-color: #ffffff;
+    }
+
+    h2 {
+      color: var(--color-primary);
+      margin-top: 0;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--color-secondary), var(--color-primary));
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-muted);
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin: 0 0 12px;
+      color: var(--color-text);
+    }
+
+    .muted {
+      color: var(--color-muted);
+      font-size: 0.85rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      font-size: 0.9rem;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 11px 14px;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    th {
+      background: linear-gradient(90deg, #004aad, #2563eb);
+      color: #f9fafb;
+      font-weight: 500;
+      font-size: 0.86rem;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tr:nth-child(even) td {
+      background-color: #f9fafb;
+    }
+
+    tr:hover td {
+      background-color: #eff6ff;
+    }
+
+    .total-row td {
+      font-weight: 600;
+      background-color: var(--color-primary-soft);
+      border-top: 1px solid #c4d4ff;
+    }
+
+    .totals-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 0.85rem;
+    }
+
+    .totals-strip-item {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background-color: #f3f4ff;
+      border: 1px dashed #c7d2fe;
+    }
+
+    .subheading {
+      margin-top: 14px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #111827;
+    }
+
+    footer {
+      text-align: center;
+      padding: 16px 20px 26px;
+      color: var(--color-muted);
+      font-size: 0.8rem;
+    }
+
+    a.source-link {
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    a.source-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="header-badge">
+      <span></span>
+      Propuesta económica · PortalAR – Galería en Realidad Aumentada
+    </div>
+    <h1>Propuesta Económica – PortalAR (Galería en Realidad Aumentada)</h1>
+    <p class="header-subtitle">
+      Desarrollo e implementación de PortalAR, una experiencia de galería en realidad aumentada
+      para presentar proyectos universitarios mediante un portal AR y un cuarto virtual interactivo.
+    </p>
+  </div>
+</header>
+
+<main>
+
+  <!-- Resumen Ejecutivo -->
+  <section class="card">
+    <div class="section-tag">Resumen ejecutivo</div>
+    <h2>Resumen del proyecto</h2>
+    <p>
+      La propuesta cubre el diseño, desarrollo e implementación de <strong>PortalAR</strong>, una
+      aplicación iOS que utiliza ARKit y RealityKit para crear un portal de realidad aumentada que
+      lleva a los usuarios a una sala virtual donde se muestran proyectos universitarios en forma
+      de imágenes o videos.
+    </p>
+    <p>
+      El esfuerzo estimado es de <strong>808 horas</strong>, equivalentes a
+      <strong>101 jornadas de 8 horas</strong>. La inversión por mano de obra se estima en
+      <strong>22,800 USD</strong>. Los costos con terceros para el primer año de operación se
+      descomponen en aproximadamente <strong>100 USD</strong> de servicios de configuración única
+      y <strong>231 USD</strong> de costos recurrentes (hosting, dominio, SSL y cuenta de
+      desarrollador Apple), para un subtotal de <strong>23,131 USD</strong> sin impuestos.
+    </p>
+    <p>
+      Asumiendo facturación en Guatemala y la aplicación del IVA general del
+      <strong>12%</strong>, el total aproximado asciende a
+      <strong>≈ 25,900 USD</strong> con impuestos incluidos.
+    </p>
+    <div class="totals-strip">
+      <div class="totals-strip-item"><strong>Mano de obra:</strong> 22,800 USD</div>
+      <div class="totals-strip-item"><strong>Costos iniciales (terceros):</strong> 100 USD</div>
+      <div class="totals-strip-item"><strong>Costos recurrentes 1er año:</strong> 231 USD</div>
+      <div class="totals-strip-item"><strong>Subtotal sin IVA:</strong> 23,131 USD</div>
+      <div class="totals-strip-item"><strong>IVA 12% (ref.):</strong> ≈ 2,776 USD</div>
+      <div class="totals-strip-item"><strong>Total con IVA:</strong> ≈ 25,900 USD</div>
+    </div>
+    <p class="muted">
+      Montos referenciales y ajustables según el alcance final y el esquema de facturación.
+    </p>
+  </section>
+
+  <!-- Distribución General del Proyecto -->
+  <section class="card card-soft">
+    <div class="section-tag">Esfuerzo estimado</div>
+    <h2>Distribución general del proyecto</h2>
+    <p>
+      Distribución de horas por tipo de actividad para el desarrollo de PortalAR.
+    </p>
+    <table>
+      <tr>
+        <th>Grupo</th>
+        <th>Aplicación</th>
+        <th>Horas</th>
+      </tr>
+      <tr><td>Gestión</td><td>Coordinación general del proyecto</td><td>16</td></tr>
+      <tr><td>Seguimiento de Tareas</td><td>Gestión de backlog y entregables</td><td>40</td></tr>
+      <tr><td>Análisis</td><td>Requerimientos y diseño de experiencia AR</td><td>24</td></tr>
+      <tr><td>Documentación</td><td>Guías, manuales y especificaciones</td><td>40</td></tr>
+      <tr><td>Desarrollo</td><td>Implementación de PortalAR (iOS + AR)</td><td>480</td></tr>
+      <tr><td>Pruebas y QA</td><td>Testing funcional, AR y experiencia de usuario</td><td>144</td></tr>
+      <tr><td>Implementación</td><td>Despliegue, publicación y ajustes finales</td><td>48</td></tr>
+      <tr><td>Soporte</td><td>Soporte post-despliegue inicial</td><td>24</td></tr>
+      <tr class="total-row"><td colspan="2">Total</td><td>808</td></tr>
+    </table>
+    <p class="muted">
+      808 horas ≈ 101 jornadas de 8 horas. La duración en calendario dependerá de la
+      dedicación semanal acordada.
+    </p>
+  </section>
+
+  <!-- Costos Propuestos - Nuestro Equipo -->
+  <section class="card card-soft">
+    <div class="section-tag">Inversión en talento</div>
+    <h2>Costos propuestos – Nuestro equipo</h2>
+    <p>
+      Costos expresados en jornadas de 8 horas, equilibrando un Jefe de Proyecto con experiencia
+      y un equipo de analistas/programadores especializados en iOS, ARKit y RealityKit.
+    </p>
+
+    <table>
+      <tr>
+        <th>Perfil</th>
+        <th>Jornadas</th>
+        <th>Tarifa (USD/jornada)</th>
+        <th>Total (USD)</th>
+      </tr>
+      <tr>
+        <td>Jefe de Proyecto</td>
+        <td>26</td>
+        <td>300</td>
+        <td>7,800</td>
+      </tr>
+      <tr>
+        <td>Analistas Programadores</td>
+        <td>75</td>
+        <td>200</td>
+        <td>15,000</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="3">Total mano de obra del proyecto</td>
+        <td>22,800</td>
+      </tr>
+    </table>
+
+    <div class="totals-strip">
+      <div class="totals-strip-item"><strong>Jornadas totales:</strong> 101</div>
+      <div class="totals-strip-item"><strong>Horas totales:</strong> 808</div>
+      <div class="totals-strip-item"><strong>Tarifa promedio por hora:</strong> ≈ 28.2 USD/h</div>
+    </div>
+  </section>
+
+  <!-- Comparación con la Competencia -->
+  <section class="card card-soft">
+    <div class="section-tag">Contexto de mercado</div>
+    <h2>Comparación con la competencia</h2>
+    <p>
+      Comparación referencial usando la tarifa horaria promedio en Estados Unidos para un
+      ingeniero de software, aplicada a las mismas <strong>808 horas</strong>
+      estimadas para PortalAR.
+    </p>
+
+    <table>
+      <tr>
+        <th>Escenario</th>
+        <th>Tarifa promedio (USD/h)</th>
+        <th>Costo estimado para 808 h (USD)</th>
+      </tr>
+      <tr>
+        <td>Competencia promedio (ingeniero de software EE. UU.)</td>
+        <td>66.40</td>
+        <td>≈ 53,651</td>
+      </tr>
+      <tr class="total-row">
+        <td>Propuesta PortalAR (equipo dedicado)</td>
+        <td>≈ 28.2</td>
+        <td>22,800</td>
+      </tr>
+    </table>
+
+    <p class="muted">
+      Fuente:
+      <a class="source-link" href="https://www.bls.gov/oes/2023/may/oes151252.htm" target="_blank" rel="noopener noreferrer">
+        U.S. Bureau of Labor Statistics – Occupational Employment and Wages, May 2023, Software Developers (media nacional 66.40 USD/h)
+      </a>.
+    </p>
+  </section>
+
+  <!-- Costos Adicionales -->
+  <section class="card card-soft">
+    <div class="section-tag">Infraestructura y servicios</div>
+    <h2>Costos adicionales (1er año de operación)</h2>
+    <p>
+      Separación de costos fijos (una sola vez) y costos variables/recurrentes asociados a la
+      operación de PortalAR durante el primer año.
+    </p>
+
+    <div class="subheading">Costos iniciales (únicos)</div>
+    <table>
+      <tr>
+        <th>Concepto</th>
+        <th>Monto (USD)</th>
+        <th>Nota</th>
+      </tr>
+      <tr>
+        <td>Configuración pasarela de pago (Stripe / PayPal – sandbox y live)</td>
+        <td>100</td>
+        <td>Servicio de configuración y pruebas (único)</td>
+      </tr>
+      <tr class="total-row">
+        <td>Total costos iniciales de terceros</td>
+        <td colspan="2">100</td>
+      </tr>
+    </table>
+
+    <div class="subheading">Costos recurrentes (1 año de despliegue)</div>
+    <table>
+      <tr>
+        <th>Concepto</th>
+        <th>Monto estimado (USD/año)</th>
+        <th>Nota</th>
+      </tr>
+      <tr>
+        <td>Hosting app / API (cloud)</td>
+        <td>120</td>
+        <td>≈ 10 USD/mes en plan básico (~1 GB RAM) en proveedores tipo DigitalOcean / Lightsail</td>
+      </tr>
+      <tr>
+        <td>Dominio .com</td>
+        <td>12</td>
+        <td>Registro anual de dominio estándar (.com)</td>
+      </tr>
+      <tr>
+        <td>Certificado SSL</td>
+        <td>0</td>
+        <td>Uso de Let's Encrypt / Cloudflare (sin coste adicional)</td>
+      </tr>
+      <tr>
+        <td>Cuenta de Desarrollador Apple (Apple Developer Program)</td>
+        <td>99</td>
+        <td>Anual · necesaria para publicar apps iOS en App Store</td>
+      </tr>
+      <tr class="total-row">
+        <td>Total costos recurrentes 1er año</td>
+        <td colspan="2">231</td>
+      </tr>
+    </table>
+
+    <p class="muted">
+      Los entornos de pruebas de Stripe y PayPal (sandbox) no tienen costo de licenciamiento;
+      el monto de 100 USD corresponde a la configuración inicial como servicio profesional.
+    </p>
+    <p class="muted">
+      Referencias de precios:
+      <a class="source-link" href="https://www.digitalocean.com/pricing/droplets" target="_blank" rel="noopener noreferrer">
+        DigitalOcean – Droplets básicos desde ~6 USD/mes
+      </a>,
+      <a class="source-link" href="https://aws.amazon.com/es/lightsail/pricing/" target="_blank" rel="noopener noreferrer">
+        AWS Lightsail – instancias desde ~5–10 USD/mes
+      </a>,
+      <a class="source-link" href="https://elementor.com/blog/how-much-does-a-domain-name-cost-2/" target="_blank" rel="noopener noreferrer">
+        Coste típico dominios .com (10–20 USD/año)
+      </a>,
+      <a class="source-link" href="https://letsencrypt.org/es/" target="_blank" rel="noopener noreferrer">
+        Let's Encrypt – certificados SSL gratuitos
+      </a>,
+      <a class="source-link" href="https://developer.apple.com/programs/enroll/" target="_blank" rel="noopener noreferrer">
+        Apple Developer Program – 99 USD/año
+      </a>,
+      <a class="source-link" href="https://docs.stripe.com/sandboxes" target="_blank" rel="noopener noreferrer">
+        Stripe – entorno de pruebas sin coste
+      </a>,
+      <a class="source-link" href="https://developer.paypal.com/tools/sandbox/" target="_blank" rel="noopener noreferrer">
+        PayPal – sandbox de pruebas
+      </a>.
+    </p>
+  </section>
+
+  <!-- Impuestos -->
+  <section class="card card-soft">
+    <div class="section-tag">Impuestos (referencia Guatemala)</div>
+    <h2>Resumen de inversión con impuestos</h2>
+    <table>
+      <tr>
+        <th>Concepto</th>
+        <th>Monto (USD)</th>
+      </tr>
+      <tr>
+        <td>Mano de obra (PortalAR)</td>
+        <td>22,800</td>
+      </tr>
+      <tr>
+        <td>Costos iniciales de terceros</td>
+        <td>100</td>
+      </tr>
+      <tr>
+        <td>Costos recurrentes 1er año</td>
+        <td>231</td>
+      </tr>
+      <tr class="total-row">
+        <td>Subtotal sin IVA</td>
+        <td>23,131</td>
+      </tr>
+      <tr>
+        <td>IVA 12% (referencial)</td>
+        <td>≈ 2,776</td>
+      </tr>
+      <tr class="total-row">
+        <td>Total con IVA</td>
+        <td>≈ 25,900</td>
+      </tr>
+    </table>
+    <p class="muted">
+      Referencias del IVA general del 12&nbsp;% en Guatemala:
+      <a class="source-link" href="https://en.portal.sat.gob.gt/portal/preguntas-frecuentes/principales-impuestos-guatemala/" target="_blank" rel="noopener noreferrer">
+        SAT Guatemala – Principales impuestos
+      </a>,
+      <a class="source-link" href="https://taxsummaries.pwc.com/guatemala/corporate/other-taxes" target="_blank" rel="noopener noreferrer">
+        PWC Tax Summaries – Guatemala VAT 12&nbsp;%
+      </a>.
+    </p>
+  </section>
+
+  <!-- Análisis y Conclusión -->
+  <section class="card">
+    <div class="section-tag">Conclusión</div>
+    <h2>Análisis y conclusión</h2>
+    <p>
+      La inversión estimada para PortalAR, incluyendo desarrollo completo y costos de terceros del
+      primer año, es de aproximadamente <strong>23,131 USD</strong> sin impuestos, o cerca de
+      <strong>25,900 USD</strong> con IVA incluido (12%).
+    </p>
+    <p>
+      PortalAR ofrece una forma distinta y moderna de presentar proyectos universitarios,
+      transformando un espacio físico en una galería en realidad aumentada. Desde el punto de
+      vista “BI”, la propuesta privilegia indicadores claros (horas, jornadas, tarifas y costos
+      fijos/variables) por encima de texto, dejando la puerta abierta a incorporar analíticas de
+      uso y comportamiento en futuras fases.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  Propuesta confidencial. Uso exclusivo para evaluación interna del cliente.
+</footer>
+
+</body>
+</html>
